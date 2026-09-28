@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WarehouseSlot | Warehouse Management</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">W</div>
+        <div>
+          <h1>WarehouseSlot</h1>
+          <span>Warehouse Management</span>
+        </div>
+      </div>
+
+      <nav id="nav">
+        <button class="nav-item active" data-page="dashboard"><span>▦</span> Dashboard</button>
+        <button class="nav-item" data-page="zones"><span>◫</span> Zones</button>
+        <button class="nav-item" data-page="bins"><span>▤</span> Bins</button>
+        <button class="nav-item" data-page="stock"><span>◈</span> Stock Assignment</button>
+        <button class="nav-item" data-page="orders"><span>□</span> Orders</button>
+        <button class="nav-item" data-page="picklists"><span>✓</span> Pick Lists</button>
+        <button class="nav-item" data-page="reports"><span>◒</span> Reports</button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span class="status-dot"></span>
+        <span>Backend: <strong id="backendStatus">Checking...</strong></span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <button id="mobileMenu" class="mobile-menu">☰</button>
+          <h2 id="pageTitle">Dashboard</h2>
+          <p id="pageSubtitle">Warehouse overview and current activity</p>
+        </div>
+        <button class="refresh-btn" onclick="refreshCurrentPage()">↻ Refresh</button>
+      </header>
+
+      <section id="page-dashboard" class="page active-page"></section>
+      <section id="page-zones" class="page"></section>
+      <section id="page-bins" class="page"></section>
+      <section id="page-stock" class="page"></section>
+      <section id="page-orders" class="page"></section>
+      <section id="page-picklists" class="page"></section>
+      <section id="page-reports" class="page"></section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -22,6 +22,10 @@ public class PickListItem {
     @Column(nullable = false)
     private Integer quantity;
 
+    @NotNull(message = "Picked quantity is required")
+    @Column(name = "picked_quantity", nullable = false)
+    private Integer pickedQuantity = 0;
+
     @NotNull(message = "Route sequence is required")
     @Positive(message = "Route sequence must be greater than zero")
     @Column(nullable = false)
@@ -36,6 +40,7 @@ public class PickListItem {
     private Bin bin;
 
     public PickListItem() {
+        this.pickedQuantity = 0;
     }
 
     public PickListItem(
@@ -47,6 +52,7 @@ public class PickListItem {
 
         this.itemCode = itemCode;
         this.quantity = quantity;
+        this.pickedQuantity = 0;
         this.routeSequence = routeSequence;
         this.pickList = pickList;
         this.bin = bin;
@@ -62,6 +68,10 @@ public class PickListItem {
 
     public Integer getQuantity() {
         return quantity;
+    }
+
+    public Integer getPickedQuantity() {
+        return pickedQuantity;
     }
 
     public Integer getRouteSequence() {
@@ -86,6 +96,10 @@ public class PickListItem {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public void setPickedQuantity(Integer pickedQuantity) {
+        this.pickedQuantity = pickedQuantity;
     }
 
     public void setRouteSequence(Integer routeSequence) {
