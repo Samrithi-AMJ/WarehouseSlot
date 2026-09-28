@@ -19,18 +19,15 @@ public class StockAssignment {
     @Column(nullable = false)
     private String itemCode;
 
-    @NotBlank(message = "Item name is required")
-    @Column(nullable = false)
-    private String itemName;
-
-    @NotNull(message = "Velocity is required")
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Velocity velocity;
-
+    @NotNull(message = "Quantity is required")
     @Positive(message = "Quantity must be greater than zero")
     @Column(nullable = false)
     private Integer quantity;
+
+    @NotNull(message = "Item velocity is required")
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private ItemVelocity velocity;
 
     @ManyToOne
     @JoinColumn(name = "bin_id", nullable = false)
@@ -44,16 +41,14 @@ public class StockAssignment {
 
     public StockAssignment(
             String itemCode,
-            String itemName,
-            Velocity velocity,
             Integer quantity,
+            ItemVelocity velocity,
             Bin bin,
             LocalDateTime assignedAt) {
 
         this.itemCode = itemCode;
-        this.itemName = itemName;
-        this.velocity = velocity;
         this.quantity = quantity;
+        this.velocity = velocity;
         this.bin = bin;
         this.assignedAt = assignedAt;
     }
@@ -66,16 +61,12 @@ public class StockAssignment {
         return itemCode;
     }
 
-    public String getItemName() {
-        return itemName;
-    }
-
-    public Velocity getVelocity() {
-        return velocity;
-    }
-
     public Integer getQuantity() {
         return quantity;
+    }
+
+    public ItemVelocity getVelocity() {
+        return velocity;
     }
 
     public Bin getBin() {
@@ -94,16 +85,12 @@ public class StockAssignment {
         this.itemCode = itemCode;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-    public void setVelocity(Velocity velocity) {
-        this.velocity = velocity;
-    }
-
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public void setVelocity(ItemVelocity velocity) {
+        this.velocity = velocity;
     }
 
     public void setBin(Bin bin) {
@@ -114,8 +101,9 @@ public class StockAssignment {
         this.assignedAt = assignedAt;
     }
 
-    public enum Velocity {
+    public enum ItemVelocity {
         FAST,
+        MEDIUM,
         SLOW
     }
 }
